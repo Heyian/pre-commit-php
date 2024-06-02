@@ -48,6 +48,24 @@ A bash script that will run the appropriate phpunit executable. It will assume
 
 Note in its current state, it will run the whole PHPUnit test as along as `.php` file was committed.
 
+## php-pest
+
+```yaml
+- repo: https://github.com/Heyian/pre-commit-php.git
+  rev: 1.5.0
+  hooks:
+  - id: php-pest
+```
+
+A bash script that will run the appropriate pest executable. It will first test if the environment is running Laravel Sail, if so it will execute under the sail docker container.
+
+It will assume
+
+- Find the executable to run at either `sail pest --parallel` `vendor/bin/pest`, `pest` or `php phpunit.phar` (in that exact order).
+- There is already a `phpunit.xml` in the root of the repo
+
+Note in its current state, it will run the whole PHPUnit test as along as `.php` file was committed.
+
 ## php-cs
 
 ```yaml

@@ -20,6 +20,13 @@
   language: script
   files: \.php$
 
+- id: php-pest
+  name: PHP Pest
+  description: Run the full Pest test. Checks which Pest executable is available first and then runs it. It will also check if it's running under Laravel Sail.
+  entry: pre_commit_hooks/php-pest.sh
+  language: script
+  files: \.php$
+
 - id: php-cs
   name: PHP Codesniffer
   description: Run php codesniffer against all staged PHP files.
