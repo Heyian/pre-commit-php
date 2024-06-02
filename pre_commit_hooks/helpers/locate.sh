@@ -10,13 +10,20 @@ exec_command=""
 #Verify if running in a Sail environment
 sail_running=""
 if docker ps --filter "name=laravel.test" --filter "status=running" | grep -q "laravel.test"; then
-    sail_running=1
+    if [ -f ./vendor/bin/sail ];then
+        sail_running=1
+        echo "Sail is running and the binary was found."
+    else
+        sail_running=0
+        echo "Sail is running but the binary WAS NOT found."
+    fi
 else
     sail_running=0
+    echo "Sail is NOT running."
 fi
 
 # Sail command
-sail_command="sail $local_command"
+sail_command="./vendor/bin/sail $local_command"
 # A phar file will need to be called by php
 prefixed_local_command="php $local_command"
 
